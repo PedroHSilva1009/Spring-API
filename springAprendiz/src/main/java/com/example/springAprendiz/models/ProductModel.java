@@ -2,12 +2,16 @@ package com.example.springAprendiz.models;
 
 import jakarta.persistence.*;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 @Table(name = "Products")
-public class ProductModel implements Serializable {
+public class ProductModel extends RepresentationModel<ProductModel> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -20,7 +24,7 @@ public class ProductModel implements Serializable {
     private Double price;
     private Integer amount;
     private Integer productStatus;
-
+    
     public UUID getProductId() {
         return productId;
     }
